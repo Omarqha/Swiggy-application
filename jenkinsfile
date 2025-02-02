@@ -55,8 +55,8 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build -t swiggy ."
-                       sh "docker tag swiggy Omarqha/swiggy:latest "
-                       sh "docker push Omarqha/swiggy:latest "
+                       sh "docker tag swiggy omarqhayyam/swiggy:latest "
+                       sh "docker push omarqhayyam/swiggy:latest "
                     }
                 }
             }
@@ -68,7 +68,7 @@ pipeline{
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name swiggy -p 3000:3000 Omarqha/swiggy:latest'
+                sh 'docker run -d --name swiggy -p 3000:3000 omarqhayyam/swiggy:latest'
             }
         }
     }
